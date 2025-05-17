@@ -1,5 +1,25 @@
 <script setup>
-
+    // import { getCategoryAPI } from '@/apis/layout'
+    // import { RouterLink } from 'vue-router'
+    import { ref } from 'vue'
+    import {nanoid} from 'nanoid'
+    // const categoryList = ref([])
+    // const category = async ()=> {
+    //     const res = await getCategoryAPI()
+    //     console.log(res);
+    //     categoryList.value = res.data
+    // }
+    const categoryList = ref([
+        {id: nanoid(), name: '居家'},
+        {id: nanoid(), name: '美食'},
+        {id: nanoid(), name: '服饰'},
+        {id: nanoid(), name: '母婴'},
+        {id: nanoid(), name: '个护'},
+        {id: nanoid(), name: '严选'},
+        {id: nanoid(), name: '数码'},
+        {id: nanoid(), name: '运动'},
+        {id: nanoid(), name: '杂项'},
+    ])
 </script>
 
 <template>
@@ -9,17 +29,8 @@
                 <RouterLink to="/">小兔鲜</RouterLink>
             </h1>
             <ul class="app-header-nav">
-                <li class="home">
-                    <RouterLink to="/">首页</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/">居家</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/">美食</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/">服饰</RouterLink>
+                <li class="home" v-for="item in categoryList" :key="item.id">
+                    <RouterLink to="/">{{ item.name }}</RouterLink>
                 </li>
             </ul>
             <div class="search">
